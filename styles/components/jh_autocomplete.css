@@ -1,0 +1,43 @@
+.jh-autocomplete__wrapper {
+	display: inline-flex;
+	flex-direction: column;
+	position: relative;
+	font-family: 'Arial';
+}
+	
+.jh-autocomplete__list-container {
+	border: 1px solid grey;
+	border-top: 0;
+	position: absolute;
+	width: 99%;
+	top: 100%;
+	background: #fff; 
+	display: none;
+}
+
+.jh-autocomplete__list-item {
+	font-size: 1.1em;
+	padding: 0.2em;
+	cursor: pointer;  
+	text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.jh-autocomplete__list-item:hover {
+	background: rgba(0, 0, 0, 0.05)
+}
+
+.jh-autocomplete__list-item--hover {
+	background: rgba(0, 0, 0, 0.05);
+}
+
+.jh-autocomplete__input {
+	font-size: 1.1em;
+}
+
+.jh-autocomplete__input.jh-autocomplete__input--autocomplete-visible + .jh-autocomplete__list-container {
+	display: block;
+}
+
+  

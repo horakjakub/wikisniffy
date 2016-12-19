@@ -1,0 +1,37 @@
+article {
+	margin-top: 1.9em;
+    display: flex;
+    flex-direction: column;
+	font-size: 1.3em; 
+    color: rgba(0, 0, 0, 0.6);
+    border: 2px solid rgba(0,0,0,0);
+}
+
+article:hover {
+    color: rgba(0, 0, 0, 1);
+    border: 2px dashed rgba(0,0,0,0.6);
+}
+
+section {
+    padding: 0.5em;
+}
+
+header {
+    padding: 0.5em;
+} 
+
+a {
+	font-size: 1.8em;
+} 
+
+content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}	
+
+img { 
+    padding: 0.5em;
+	max-height: 7.5em;
+	max-width: 7.5em;
+}
