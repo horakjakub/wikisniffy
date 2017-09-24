@@ -25,7 +25,7 @@ ModuleManager.define('SearchingViewController', [ '$document', '$window', 'WikiR
 	// ------------------------------------------------------------------//
 	//                    DOM manipulations control  					 //
 	// ------------------------------------------------------------------// 
-	// functions created to make DOM manipulation afrer reciving data // JH 
+	// functions created to make DOM manipulation after reciving data // JH
  
 	function addArticleToMainContainer(articleData){ 
         var article =  articleDirective.create();
@@ -65,7 +65,7 @@ ModuleManager.define('SearchingViewController', [ '$document', '$window', 'WikiR
 	// ------------------------------------------------------------------//
 	//                         RESULT OBSERVER 							 //
 	// ------------------------------------------------------------------//
-	// it waits for responds from reqest processes and based on those responds it making 
+	// it waits for responds from reqest processes and based on those responds its making
 	// DOM manipulations // JH 
 
 	var reultsObserver = {
@@ -98,12 +98,11 @@ ModuleManager.define('SearchingViewController', [ '$document', '$window', 'WikiR
 			this._lastRecivedDescriptionData = textData;
 			this._articlesImageURLCollection[textData.index] = textData.text;
 			addTextToSelectedArticle(textData.index, textData.text);
-
 			// After receiving all articles descriptions, start proccess of getting images to articles // JH 
 			var checkIsItLastCounter = 0;
 			for(var textData in this._articlesImageURLCollection){
-				checkIsItLastCounter++ 
-				if(checkIsItLastCounter === 10){
+				checkIsItLastCounter++;
+				if(checkIsItLastCounter === this._searchResults.length){
 					this._searchResults.forEach(runGetImageURLProcess)
 				}
 			}
@@ -115,7 +114,7 @@ ModuleManager.define('SearchingViewController', [ '$document', '$window', 'WikiR
 	// ------------------------------------------------------------------//
 	//                       LOGIC - request processes 					 //
 	// ------------------------------------------------------------------//  
-	// functions created to making reqests for data and preparing answers to right use // JH 
+	// functions created to making requests for data and preparing answers to right use // JH
 
 	var wrs = WikiReqeuestsService;
 
@@ -157,20 +156,20 @@ ModuleManager.define('SearchingViewController', [ '$document', '$window', 'WikiR
 		});
 	}
 
-  	function runGetImageURLProcess(articleData, ind){ 
-		if(articleData.imageTitle){		  		
+  	function runGetImageURLProcess(articleData, ind){
+		if(articleData.imageTitle){
 			wrs.sendImageURLPromise(articleData.imageTitle)
-	  		.then(function(data){
-				var pagesCollection = data.query.pages; 
-				for(var page in pagesCollection){   
-					if(pagesCollection[page].imageinfo && pagesCollection[page].imageinfo.length !== 0){  
-						reultsObserver.imageURLdata = { index: ind, url: pagesCollection[page].imageinfo[0].url || null };
-					} 
-					else {
-						reultsObserver.imageURLdata = { index: ind, url: null };
+				.then(function(data){
+					var pagesCollection = data.query.pages;
+					for(var page in pagesCollection){
+						if(pagesCollection[page].imageinfo && pagesCollection[page].imageinfo.length !== 0){
+							reultsObserver.imageURLdata = { index: ind, url: pagesCollection[page].imageinfo[0].url || null };
+						}
+						else {
+							reultsObserver.imageURLdata = { index: ind, url: null };
+						}
 					}
-				} 
-	  		});
+				});
   		} else {
   			reultsObserver.imageURLdata = { index: ind, url: null };
   		} 

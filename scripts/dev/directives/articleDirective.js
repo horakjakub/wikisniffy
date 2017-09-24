@@ -18,7 +18,7 @@ ModuleManager.define('articleDirective', [ '$document', 'DOMService'], function 
  	function setDescriptionText(text){
  		var section = this.children[1].children[0];
  		DOM.addTextNode(section, text);
- 	}; 
+ 	}
 
  	function setImageURL(imgURL){
  		var img = this.children[1].children[1].children[0];  
@@ -48,7 +48,7 @@ ModuleManager.define('articleDirective', [ '$document', 'DOMService'], function 
 		newArticle.setArticleTitle = setArticleTitle;
 
 		return newArticle;
- 	} 
+ 	};
 
  	return intface;  
 });
