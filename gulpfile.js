@@ -24,7 +24,7 @@ gulp.task('DevelopBuild', [
 ]);
 
 var scriptsPath = './scripts/',
-    stylesPath = './styles/', 
+    stylesPath = './styles/';
     
 // ------------- JS project tasks  -------------------//  
 
@@ -61,6 +61,7 @@ gulp.task('JSwatchProjectFiles', function() {
     ], 
     ['JSconcatProjectScripts']);
 }); 
+
 
 // ------------- JS libaries tasks  -------------------//   
 
@@ -106,5 +107,13 @@ gulp.task('CSSconcatANDminify', ['CSSconcat'], function () {
     .pipe(concatCss("main.css")) 
     .pipe(csso())
     .pipe(gulp.dest(stylesPath));
+});
+
+gulp.task('CSSwatchFiles', function() {
+    gulp.watch(
+        [
+            stylesPath + '**/*.css'
+        ],
+        ['CSSconcat']);
 });
  

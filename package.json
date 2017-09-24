@@ -1,18 +1,18 @@
 {
   "name": "wikisniffy",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "",
-  "main": "index.html",  
-  "dependencies": { 
-    "gulp": "^3.9.1", 
+  "main": "index.html",
+  "devDependencies": {
+    "gulp": "^3.9.1",
     "gulp-concat": "^2.6.0",
-    "gulp-concat-css": "^2.3.0", 
-    "gulp-csso": "^2.0.0", 
-    "gulp-sourcemaps": "^2.2.0", 
+    "gulp-concat-css": "^2.3.0",
+    "gulp-csso": "^2.0.0",
+    "gulp-sourcemaps": "^2.2.0",
     "gulp-uglify": "^2.0.0"
   },
-  "devDependencies": {},
   "scripts": {
+    "start": "./node_modules/.bin/gulp ProductionBuild",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Jakub Horak",
